@@ -3,9 +3,10 @@
 // @description      Export script for interactive CYOAs.
 // @match            https://ltouroumov.github.io/worm-cyoa-v6-fork/viewer/
 // @match            https://*.neocities.org/*
+// @match            https://*.ltouroumov.ch/*
 // @updateURL        https://raw.githubusercontent.com/LordHarkon/tampermonkey-scripts/main/cyoa-backpack-exporter.user.js
 // @downloadURL      https://raw.githubusercontent.com/LordHarkon/tampermonkey-scripts/main/cyoa-backpack-exporter.user.js
-// @version          1.3
+// @version          1.4
 // @grant            GM_addStyle
 // ==/UserScript==
 
