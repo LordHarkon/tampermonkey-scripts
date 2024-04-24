@@ -6,7 +6,7 @@
 // @match            https://*.ltouroumov.ch/*
 // @updateURL        https://raw.githubusercontent.com/LordHarkon/tampermonkey-scripts/main/cyoa-backpack-exporter.user.js
 // @downloadURL      https://raw.githubusercontent.com/LordHarkon/tampermonkey-scripts/main/cyoa-backpack-exporter.user.js
-// @version          1.4
+// @version          1.5
 // @grant            GM_addStyle
 // ==/UserScript==
 
@@ -26,12 +26,12 @@ function exportBackpack() {
   const exportLines = Array.from(document.querySelectorAll('.v-dialog__content--active[role=document] > .v-dialog--active .col-12 img[src=""] + h2')).map(heading => {
     const sectionExport = Array.from(heading.parentElement.parentElement.parentElement.querySelectorAll("div + .objectRow span.fullHeight")).map(entry => {
       const entryHeading = entry.querySelector("h3");
-      const entryHeadingText = entryHeading.innerHTML.replace("&amp;", "&");
+      const entryHeadingText = entryHeading.innerHTML.replace("&amp;", "&").trim();
 
       const entryNum = entry.querySelector("h3 + .row > .spacer + button + .spacer + div");
       const entryNumText = entryNum ? ` (x${entryNum.innerHTML})` : '';
 
-      const subHeadings = Array.from(entry.querySelectorAll("h4")).map(sub => sub.innerHTML).join(', ');
+      const subHeadings = Array.from(entry.querySelectorAll("h4")).map(sub => sub.innerHTML.trim()).join(', ');
       const subHeadingText = subHeadings ? ` (*${subHeadings}*)` : '';
 
       return `\`${entryHeadingText}${entryNumText}${subHeadingText}\``;
